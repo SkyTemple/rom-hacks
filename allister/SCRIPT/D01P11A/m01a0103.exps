@@ -1,0 +1,307 @@
+macro msg_start($actor, $message) {
+    message_SetActor($actor);
+    message_SetFace($actor, FACE_NORMAL, FACE_POS_BOTTOM_L_FACEINW);
+    message_Talk($message);
+}
+
+macro msg_start_face($actor, $face, $message) {
+    message_SetActor($actor);
+    message_SetFace($actor, $face, FACE_POS_BOTTOM_L_FACEINW);
+    message_Talk($message);
+}
+
+macro msg_start_right($actor, $message) {
+    message_SetActor($actor);
+    message_SetFace($actor, FACE_NORMAL, FACE_POS_BOTTOM_L_FACEOUTW);
+    message_Talk($message);
+}
+
+macro msg_no_name($actor, $message) {
+    message_SetActor($actor);
+    message_SetFace($actor, FACE_NORMAL, FACE_POS_BOTTOM_C_FACER);
+    message_Monologue($message);
+}
+
+
+def 0 {
+    message_Narration(30, "[CN]This is a highlight from TheGoldCrow's\n[CN]PMD D&D campaign,\n[CN]recreated in Explorers of Sky.");
+    message_Narration(30, "[CN]It was made using SkyTemple and features\n[CN]art by Fireally, NeroIntruder and Quil.");
+    message_Narration(30, "[CN]More information and links can\n[CN]be found in the description.");
+    message_Close();
+    Wait(30);
+    
+    ~msg_start_right(ACTOR_DH_ALLISTER, " Full speed ahead!");
+    message_Close();
+
+    back2_SetMode(4);
+    back2_SetGround(LEVEL_V02P01A);
+    camera2_SetPositionMark(Position<'CamPos', 20.5, 14>);
+    bgm_PlayFadeIn(177, 120, 256);
+    screen2_FadeIn(1, 120);
+    
+    message_ResetActor();
+    message_Monologue("(The island is still kind of far off in the\ndistance but you eventually pull up to a\nbeachfront and there's some rocks over to");
+    message_Monologue("the side, that Allister avoids pretty easily\nand he sets the anchor down).");
+    message_Close();
+    
+    back_SetGround(LEVEL_D01P11A);
+    supervision_Acting(0);
+    supervision_Acting(1);
+    supervision_ActingInvisible(2);
+    with (performer 0) {
+        camera_SetMyself();
+    }
+    with (actor ACTOR_DH_LUCIUS) {
+        SetAnimation(4);
+    }
+    with (actor ACTOR_DH_HENRY) {
+        SetAnimation(4);
+    }
+    with (actor ACTOR_DH_RAFFA) {
+        SetAnimation(4);
+    }
+    with (actor ACTOR_DH_ODRICK) {
+        SetAnimation(4);
+    }
+    with (actor ACTOR_DH_ALLISTER) {
+        SetAnimation(4);
+    }
+    with (actor ACTOR_NPC_SHEIMI) {
+        SetAnimation(4);
+    }
+    screen_FadeIn(1, 120);
+    
+    // INITIAL MOVEMENT SCENE
+    with (actor ACTOR_DH_ALLISTER) {
+        Move2PositionMark(1, Position<'init_al_1', 30, 24>, Position<'init_al_2', 33, 15>);
+    }
+    with (performer 0) {
+        Move2PositionMark(1, Position<'camera_move_to', 20, 17>);
+    }
+    WaitExecuteLives(ACTOR_DH_ALLISTER);
+    // END INITIAL MOVEMENT
+    
+    with (actor ACTOR_DH_ALLISTER) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ODRICK);
+    }
+    ~msg_start_right(ACTOR_DH_ALLISTER, " Well, are we gonna disembark now,\nmates?");
+    with (actor ACTOR_DH_HENRY) {
+        Move2PositionMark(1, Position<'init_henry', 33, 19>);
+    }
+    message_Close();
+    
+    
+    with (actor ACTOR_DH_LUCIUS) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_DH_ODRICK) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_DH_RAFFA) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    WaitExecuteLives(ACTOR_DH_HENRY);
+    with (actor ACTOR_DH_HENRY) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    
+    ~msg_start(ACTOR_DH_LUCIUS, " I guess so, yeah.");
+    message_Close();
+    ~msg_start_right(ACTOR_DH_ALLISTER, " Oh wait wait wait, before you leave\nthe ship...");
+    with (actor ACTOR_NPC_SHEIMI) {
+        Move2PositionMark(1, Position<'init_sora', 30, 6.5>);
+    }
+    message_Close();
+    
+    message_ResetActor();
+    message_Monologue("(Allister runs into a cabin and pulls out this\nlittle journal.)");
+    message_Close();
+    
+    with (actor ACTOR_DH_ALLISTER) {
+        Move2PositionMark(2, Position<'allister_get', 34, 8.5>);
+    }
+    WaitExecuteLives(ACTOR_DH_ALLISTER);
+    // HIDE ALLISTER
+    with (actor ACTOR_DH_ALLISTER) {
+        SetOutputAttribute(128);
+    }
+    Wait(100);
+    // SHOW ALLISTER AGAIN
+    with (actor ACTOR_DH_ALLISTER) {
+        ResetOutputAttribute(128);
+    }
+
+    with (actor ACTOR_DH_ALLISTER) {
+        Move2PositionMark(2, Position<'allister_return', 33, 15>);
+    }
+    WaitExecuteLives(ACTOR_DH_ALLISTER);
+    
+    message_Monologue("(And he puts it in front of you.)");
+    message_Close();
+    
+    with (actor ACTOR_DH_ALLISTER) {
+        Slide2PositionMark(1, Position<'allister_journal', 33, 13.5>);
+    }
+    // SHOW JOURNAL
+    se_Play(6410);
+    with (object OBJECT_G01P09A1_548) {
+        ResetOutputAttribute(128);
+    }
+    
+    
+    
+    ~msg_start_right(ACTOR_DH_ALLISTER, " Do you want to save your progress\nbefore you get off?");
+    message_Close();
+    ~msg_start_face(ACTOR_DH_LUCIUS, FACE_WORRIED, " Uh, sure?");
+    message_Close();
+    
+    message_ResetActor();
+    message_Monologue("(He opens his journal and there's little\nscribbles of portraits of him and times and\nit says [K]'Aboard the Excalibutt'.)");
+    message_Close();
+    
+    ~msg_no_name(ACTOR_DH_LUCIUS, "(Oh my gosh)");
+    message_Close();
+    ~msg_start_right(ACTOR_DH_ALLISTER, " All right, all right, here, go around.");
+    message_Close();
+    
+    with (actor ACTOR_DH_ALLISTER) {
+        Slide2PositionMark(1, Position<'allister_return2', 33, 15>);
+    }
+    se_Play(6410);
+    with (object OBJECT_G01P09A1_548) {
+        Destroy();
+    }
+    message_ResetActor();
+    message_Monologue("(So yeah, I'm guessing you all put in your name\nthe same style as him or do you just humor\nhim and just do like a little half-assed\nscribble?)");
+    
+    message_Close();
+    
+    ~msg_no_name(ACTOR_DH_HENRY, "(Oh Henry's gonna go full-ass with this.)");
+    message_Close();
+    
+    with (actor ACTOR_DH_ALLISTER) {
+        Move2PositionMark(1, Position<'allister_give_lucius', 30, 12.5>);
+    }
+    WaitExecuteLives(ACTOR_DH_ALLISTER);
+    with (actor ACTOR_DH_ALLISTER) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_LUCIUS);
+    }
+    with (actor ACTOR_DH_LUCIUS) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_DH_ODRICK) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_DH_RAFFA) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_DH_HENRY) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    ~msg_no_name(ACTOR_DH_LUCIUS, "(Lucius is going to do, his best at a\nself-portrait. [K]I haven't really had any\nestablishment of what his writing capabilities");
+    message_Monologue("are, but...)");
+    
+    message_Close();
+    
+    ~msg_no_name(ACTOR_DH_RAFFA, "(Raffa's not even going to try.)");
+    with (actor ACTOR_DH_ALLISTER) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_RAFFA);
+    }
+    message_Close();
+    
+    with (actor ACTOR_DH_ALLISTER) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_LUCIUS);
+    }
+    ~msg_no_name(ACTOR_DH_LUCIUS, "(Lucius is going to try and do his own little\nself-portrait: Lucius aboard the Excalibutt.)");
+    message_Close();
+    
+    message_Menu(MENU_SAVE_MENU);
+    
+    message_ResetActor();
+    se_Play(8961);
+    with (actor ACTOR_DH_ODRICK) {
+        SetEffect(92, 3);
+    }
+    with (actor ACTOR_DH_ODRICK) {
+        WaitEffect();
+    }
+    message_Monologue("(You can just see Odrick facepalming and he\ndoesn't even bother. He just gets off and goes\ntowards the island.)");
+    with (actor ACTOR_DH_ODRICK) {
+        // TODO: The direction constants are wrong!
+        Turn2Direction(4, 10, DIRECTION_UPLEFT);
+    }
+    Wait(30);
+    with (actor ACTOR_DH_ODRICK) {
+        Move2PositionMark(2, 
+            Position<'odrick_out1', 24.5, 16>,
+            Position<'odrick_out2', 22, 18>
+        );
+    }
+    WaitExecuteLives(ACTOR_DH_ODRICK);
+    // SHOW WATER SPLASH
+    with (object OBJECT_D04P11A1_18) {
+        ResetOutputAttribute(128);
+    }
+    se_Play(6675);
+    with (object OBJECT_D04P11A1_18) {
+        SetOutputAttribute(4);
+    }
+    // ALL FACE HIM
+    with (actor ACTOR_DH_LUCIUS) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ODRICK);
+    }
+    with (actor ACTOR_DH_RAFFA) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ODRICK);
+    }
+    with (actor ACTOR_DH_HENRY) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ODRICK);
+    }
+    with (actor ACTOR_NPC_SHEIMI) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ODRICK);
+    }
+    Wait(15);
+    with (actor ACTOR_DH_ODRICK) {
+        Move2PositionMark(2, 
+            Position<'odrick_out3', 16.5, 18>
+        );
+    }
+    with (object OBJECT_D04P11A1_18) {
+        Destroy();
+    }
+    WaitExecuteLives(ACTOR_DH_ODRICK);
+    Wait(30);
+    with (actor ACTOR_DH_ODRICK) {
+        Turn2Direction(4, 10, DIRECTION_RIGHT);
+    }
+    message_Close();
+    // ALL FACE BACK
+    with (actor ACTOR_DH_LUCIUS) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_DH_RAFFA) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_DH_HENRY) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    with (actor ACTOR_NPC_SHEIMI) {
+        Turn2DirectionLives(4, 10, ACTOR_DH_ALLISTER);
+    }
+    
+    ~msg_start(ACTOR_DH_RAFFA, " You know, maybe we shouldn't have\nlet him get off first.");
+    message_Close();
+    
+    ~msg_start_right(ACTOR_DH_ALLISTER, " Well he's gonna regret it if he needs\nto come back here, am i right?");
+    message_Close();
+    
+    ~msg_start_face(ACTOR_DH_LUCIUS, FACE_WORRIED, " Yeah... sure.");
+    message_Close();
+    
+    ~msg_start(ACTOR_DH_RAFFA, " He didn't save his progress![K]\nIf something happens he'll end up all the way\nback in the grass continent!");
+    message_Close();
+    
+    bgm_FadeOut(60);
+    screen_FadeOutAll(1, 60);
+    ProcessSpecial(PROCESS_SPECIAL_JUMP_TO_TITLE_SCREEN, 0, 0);
+    end;
+}
