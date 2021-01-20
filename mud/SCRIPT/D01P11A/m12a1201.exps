@@ -1,0 +1,60 @@
+import "talk.exps";
+
+def 0 {
+    sound_Stop();
+    Wait(60);
+    back_SetGround(LEVEL_D01P11A);
+    supervision_Acting(0);
+    with (performer 0) {
+        camera_SetMyself();
+    }
+    bgm2_PlayFadeIn(BGM_JOB_CLEAR, 60, 256);
+    screen_FadeIn(1, 60);
+    
+    Wait(20);
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_STANDARD, 
+         " That was disgusting...");
+    ~msg(ACTOR_ATTENDANT1, FACE_HAPPY, FACE_POS_STANDARD, 
+         " but we did it.");
+    ~msg_end();
+    ~msg(ACTOR_PLAYER, FACE_WORRIED, FACE_POS_STANDARD, 
+         " Arran? Who was that and why-");
+    ~msg_end();
+
+    message_EmptyActor();
+    message_Talk("[CS:N]???[CR]: Hey! You down there? What are you\ndoing?[K] Are you the new recruits?");
+    message_Close();
+    with (actor ACTOR_UNIT_NPC1) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+    with (actor ACTOR_PLAYER) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+    ~msg(ACTOR_PLAYER, FACE_WORRIED, FACE_POS_STANDARD, 
+         " Um, yes!");
+    ~msg_end();
+    message_EmptyActor();
+    message_Talk("[CS:N]???[CR]: Then why are you playing in the mud?[K]\nGet up here!");
+    message_Close();
+    ~msg(ACTOR_UNIT_NPC1, FACE_SURPRISED, FACE_POS_STANDARD, 
+         " OH! YES! Sorry! We want to join the\nguild, yes![K] We’ll be right there!");
+    ~msg_end();
+    Wait(10);
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(6, Position<'Arran', 20, 74.5>);
+    }
+    Wait(60);
+    ~msg(ACTOR_ATTENDANT1, FACE_SIGH, FACE_POS_STANDARD, 
+         " ... What have I gotten myself into?");
+    ~msg_end();
+    
+    
+    Wait(45);
+    bgm2_FadeOut(120);
+    screen_FadeOut(1, 120);
+    Wait(9000);
+    end;
+}

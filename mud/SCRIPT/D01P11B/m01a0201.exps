@@ -1,0 +1,287 @@
+import "talk.exps";
+
+def 0 {
+
+    sound_Stop();
+    back_SetGround(LEVEL_D01P11B);
+    bgm2_PlayFadeIn(BGM_MT_BRISTLE, 60, 256);
+    supervision_Acting(0);
+    supervision_Acting(3);
+    with (performer 0) {
+        camera_SetMyself();
+    }
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetAnimation(1);
+    }
+    screen_FadeIn(1, 30);
+    Wait(30);
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(1, Position<'arran 1', 9.5, 13.5>);
+    }
+    WaitExecuteLives(ACTOR_UNIT_NPC1);
+    with (actor ACTOR_UNIT_NPC1) {
+        ExecuteCommon(CORO_LOOK_AROUND_FUNC_SERIES, 0);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_NORMAL, FACE_POS_BOTTOM_R_FACEINW, 
+         " Hmm… the outpost has to be here\nsomewhere.");
+    ~msg_end();
+    Wait(10);
+    se_Play(8964);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(88, 3);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(3, Position<'arran 2', 18.5, 13.5>);
+    }
+    WaitExecuteLives(ACTOR_UNIT_NPC1);
+    with (actor ACTOR_UNIT_NPC1) {
+        TurnDirectionLives(0, ACTOR_NPC_CATERPIE);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_HAPPY, FACE_POS_BOTTOM_R_FACEINW, 
+         " Oh! [K]H-hello mister Caterpie![K]\nCan you help me?");
+    ~msg_continue(" I’m looking for the [CS:P]Marshpoint\nOutpost[CR]!");
+    ~msg_end();
+    se_Play(8968);
+    with (actor ACTOR_NPC_CATERPIE) {
+        ExecuteCommon(CORO_JUMP_SURPRISE_FUNC_SERIES, 0);
+    }
+    WaitExecuteLives(ACTOR_NPC_CATERPIE);
+    with (actor ACTOR_NPC_CATERPIE) {
+        TurnDirectionLives(0, ACTOR_UNIT_NPC1);
+    }
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " Waaa! Who are you?");
+    ~msg_end();
+    ~msg(ACTOR_UNIT_NPC1, FACE_SURPRISED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Oh! I-i’m sorry! I’m [CS:F]Arran[CR]…[K] I’m um…[K]\nI came from [CS:P]Nested Village[CR]... ");
+    ~msg(ACTOR_UNIT_NPC1, FACE_INSPIRED, FACE_POS_BOTTOM_R_FACEINW, 
+         " I want to join the Guild! [K]\nTo become an Explorer!");
+              
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " [CS:P]Nested Village[CR]? [K]But you\'re not a\nbird!");
+    ~msg_end();
+    ~msg(ACTOR_UNIT_NPC1, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Wh-? [K]I know! There’s not just birds li-");
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " Why are you lying to me?\nYou are clearly not a bird!");
+    ~msg_end();
+    ~msg(ACTOR_UNIT_NPC1, FACE_SURPRISED, FACE_POS_BOTTOM_R_FACEINW, 
+         " I know, I-");
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " I\'m not talking to liars!");
+    ~msg_end();
+    with (actor ACTOR_NPC_CATERPIE) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+    Wait(10);
+    se_Play(8961);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(92, 3);
+    }
+    WaitExecuteLives(ACTOR_UNIT_NPC1);
+    ~msg(ACTOR_UNIT_NPC1, FACE_STUNNED, FACE_POS_BOTTOM_R_FACEINW, 
+         " I-… I guess I’ll have to find it myself.");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(2, Position<'arran 3', 37.5, 13.5>);
+    }
+    screen_FadeOut(1, 90);
+    
+    
+    
+    supervision_Acting(1);
+    supervision_Acting(4);
+    with (actor ACTOR_NPC_CATERPIE) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetAnimation(1);
+    }
+    with (actor ACTOR_NPC_WURMPLE) {
+        SetAnimation(1);
+    }
+    with (actor ACTOR_NPC_WEEDLE) {
+        SetAnimation(1);
+    }
+    Wait(15);
+    screen_FadeIn(1, 90);
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'nubi 1', 12, 13.5>);
+    }
+    ~msg(ACTOR_PLAYER, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Why does this outpost have to be\ninside a boiling mud pit?");
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " Hey you! [K]What are you doing here?");
+    ~msg_end();
+    with (actor ACTOR_PLAYER) {
+        Turn2DirectionLives(4, 10, ACTOR_NPC_CATERPIE);
+    }
+    ~msg(ACTOR_PLAYER, FACE_NORMAL, FACE_POS_BOTTOM_R_FACEINW, 
+         " Oh! [K]Um… I’m looking for [CS:P]Marshpoint\nOutpost[CR].");
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " Oh, that’s over there.");
+    ~msg_end();
+    with (actor ACTOR_NPC_CATERPIE) {
+        Turn2Direction(4, 10, DIR_LEFT);
+    }
+    Wait(10);
+    ~msg(ACTOR_PLAYER, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " But… [K]that’s where I came from.");
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " You must have missed it then!");
+    ~msg_end();
+    ~msg(ACTOR_PLAYER, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Oh, okay. Thank you.");
+    ~msg_end();
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'nubi 2', 4, 13.5>);
+    }
+    with (actor ACTOR_NPC_WURMPLE) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    with (actor ACTOR_NPC_WEEDLE) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    Wait(10);
+    with (actor ACTOR_NPC_WURMPLE) {
+        SetEffect(90, 3);
+    }
+    Wait(5);
+    with (actor ACTOR_NPC_WEEDLE) {
+        SetEffect(90, 3);
+    }
+    Wait(15);
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetEffect(90, 3);
+    }
+    Wait(40);
+    with (actor ACTOR_PLAYER) {
+        Turn2DirectionLives(4, 10, ACTOR_NPC_WEEDLE);
+    }
+    Wait(20);
+    se_Play(8964);
+    with (actor ACTOR_NPC_WURMPLE) {
+        SetEffect(0, 3);
+    }
+    with (actor ACTOR_NPC_WEEDLE) {
+        SetEffect(0, 3);
+    }
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetEffect(0, 3);
+    }
+    with (actor ACTOR_NPC_WURMPLE) {
+        SetEffect(88, 3);
+    }
+    with (actor ACTOR_NPC_WEEDLE) {
+        SetEffect(88, 3);
+    }
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetEffect(88, 3);
+    }
+    Wait(40);
+    with (actor ACTOR_NPC_WURMPLE) {
+        Turn2DirectionLives(4, 10, ACTOR_NPC_WEEDLE);
+    }
+    with (actor ACTOR_NPC_WEEDLE) {
+        Turn2DirectionLives(4, 10, ACTOR_NPC_WURMPLE);
+    }
+    with (actor ACTOR_NPC_CATERPIE) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+    Wait(20);
+    ~msg(ACTOR_PLAYER, FACE_ANGRY, FACE_POS_BOTTOM_R_FACEINW, 
+         " Kids these days.");
+    ~msg_end();
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'nubi 3', 37.5, 13.5>);
+    }
+    Wait(30);
+    screen_FadeOut(1, 90);
+    
+    
+    
+    
+    
+    supervision_RemoveActing(1);
+    supervision_Acting(2);
+    supervision_RemoveActing(4);
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetAnimation(0);
+    }
+    Wait(15);
+    screen_FadeIn(1, 90);
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(1, Position<'kiona 1', 16.5, 13.5>);
+    }
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Why… of all places...");
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " I\'m never going to get this stuff out\nof my fur.");
+    ~msg_end();
+    Wait(25);
+    ~msg(ACTOR_ATTENDANT1, FACE_SIGH, FACE_POS_BOTTOM_R_FACEINW, 
+         " Urgh.");
+    ~msg_end();
+    Wait(25);
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " … Who is talking so loud? I\'m trying to sleep here.");
+    ~msg_end();
+    Wait(25);
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetAnimation(1);
+    }
+    with (actor ACTOR_NPC_CATERPIE) {
+        Turn2DirectionLives(4, 10, ACTOR_ATTENDANT1);
+    }
+    WaitExecuteLives(ACTOR_NPC_CATERPIE);
+    se_Play(8969);
+    with (actor ACTOR_NPC_CATERPIE) {
+        SetEffect(91, 3);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Turn2DirectionLives(4, 10, ACTOR_NPC_CATERPIE);
+    }
+    WaitExecuteLives(ACTOR_NPC_CATERPIE);
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " … AHHHHH! I\'m blind! The sun!");
+    ~msg_end();
+    with (actor ACTOR_NPC_CATERPIE) {
+        ExecuteCommon(CORO_LOOK_AROUND_FAST_FUNC_SERIES, 0);
+    }
+    se_Play(8968);
+    with (actor ACTOR_ATTENDANT1) {
+        ExecuteCommon(CORO_JUMP_SURPRISE_FUNC_SERIES, 0);
+    }
+    WaitExecuteLives(ACTOR_ATTENDANT1);
+    ~msg(ACTOR_ATTENDANT1, FACE_SURPRISED, FACE_POS_BOTTOM_R_FACEINW, 
+         " What?");
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " It is so bright I’m blind![K]\nI can\'t see! Help!");
+    ~msg_end();
+    ~msg(ACTOR_ATTENDANT1, FACE_SURPRISED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Are… you talking about my fur?");
+    ~msg_end();
+    ~msg(ACTOR_NPC_CATERPIE, FACE_NORMAL, FACE_POS_STANDARD, 
+         " I\'M BLIND!!!");
+    ~msg_end();
+    se_Play(8961);
+    with (actor ACTOR_ATTENDANT1) {
+        SetEffect(92, 3);
+    }
+    with (actor ACTOR_NPC_CATERPIE) {
+        ExecuteCommon(CORO_LOOK_AROUND_FAST_FUNC_SERIES, 0);
+    }
+    Wait(60);
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(1, Position<'kiona 2', 37.5, 13.5>);
+    }
+    screen_FadeOut(1, 90);
+    end;
+}

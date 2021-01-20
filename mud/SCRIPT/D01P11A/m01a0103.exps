@@ -1,0 +1,544 @@
+import "talk.exps";
+
+def 0 {
+    Wait(60);
+    back_SetGround(LEVEL_D01P11A);
+    supervision_Acting(0);
+    with (performer 0) {
+        camera_SetMyself();
+    }
+    screen_FadeIn(1, 60);
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'Nubi 1', 16.5, 70>);
+    }
+    Wait(100);
+    with (performer 0) {
+        Move2PositionMark(1, Position<'Cam 1', 16.5, 68>);
+    }
+    WaitExecuteLives(ACTOR_PLAYER);
+    Wait(20);
+    ~msg(ACTOR_PLAYER, FACE_SIGH, FACE_POS_STANDARD, 
+         " This must be it then. No more mud.");
+    ~msg_end();
+    
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'Nubi 2', 16.5, 64>);
+    }
+    with (performer 0) {
+        Move2PositionMark(1, Position<'Cam 2', 16.5, 62>);
+    }
+    Wait(10);
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'Nubi 2.5', 16.5, 61>);
+    }
+    with (performer 0) {
+        Move2PositionMark(1, Position<'Cam 2.5', 16.5, 59>);
+    }
+    Wait(30);
+    camera_SetEffect(2, 1, 33024);
+    bgm_PlayFadeIn(BGM_EARTHQUAKE3, 0, 256);
+    Wait(10);
+    ~msg(ACTOR_PLAYER, FACE_SURPRISED, FACE_POS_STANDARD, 
+         " NononoNoNoNONO!");
+    ~msg_end();
+    with (actor ACTOR_PLAYER) {
+        ResetOutputAttribute(256);
+    }
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(8);
+    }
+    with (actor ACTOR_PLAYER) {
+        Slide2PositionMark(2, Position<'Nubi 3.1', 15.5, 61>, Position<'Nubi 3.2', 16, 62.5>, Position<'Nubi 3', 16.5, 66>);
+    }
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam 3', 16.5, 66>);
+    }
+    Wait(20);
+    camera_SetEffect(0, 0, 0);
+    bgm_FadeOut(30);
+    WaitExecuteLives(ACTOR_PLAYER);
+    with (actor ACTOR_PLAYER) {
+        SetOutputAttribute(256);
+    }
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(29);
+    }
+    Wait(60);
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(23);
+    }
+    WaitExecuteLives(ACTOR_PLAYER);
+    Wait(60);
+    ~msg(ACTOR_PLAYER, FACE_TEARY_EYED, FACE_POS_STANDARD, 
+         " … EUGH! NO, WHY?! It\'s under my\naura flaps! [K]This is never going to come out!");
+    ~msg_end();
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(1);
+    }
+    
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'Nubi 3', 16.5, 52>);
+    }
+    Wait(30);
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam 4', 62, 29.5>);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(2, 
+            Position<'Arran Run 1', 50.5, 53>,
+            Position<'Arran Run 2', 50.5, 41.5>,
+            Position<'Arran Run 3', 50.5, 53>,
+            Position<'Arran Run 4', 76, 50.5>,
+            
+            Position<'Arran Run 1', 50.5, 53>,
+            Position<'Arran Pos', 48, 47.5>
+        );
+    }
+    Wait(120);
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(1, Position<'Kiona 2', 60, 29.5>);
+    }
+    WaitExecuteLives(ACTOR_ATTENDANT1);
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_STANDARD, 
+         " And now earthquakes? [K]You can\'t be\nserious. At least this seems to be the outpost.");
+    ~msg_end();
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(1, Position<'Kiona 2', 60, 34.5>);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        Turn2DirectionLives(4, 10, ACTOR_ATTENDANT1);
+    }
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam 5', 54, 45.5>);
+    }
+    WaitExecutePerformer(0);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(90, 3);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_HAPPY, FACE_POS_BOTTOM_R_FACEINW, 
+         " HEY there! Are you from the guild?[K]\nI want to join!");
+    ~msg_end();
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(1, Position<'Kiona 3', 54, 41.5>);
+    }
+    Wait(30);
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam 6', 52, 51.5>);
+    }
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " No, actually I--");
+    ~msg_end();
+    ~msg(ACTOR_UNIT_NPC1, FACE_HAPPY, FACE_POS_BOTTOM_R_FACEINW, 
+         " Because the building is locked, and\nI was wondering why!");
+    ~msg_continue(" I’m ready for my first mission!");
+    ~msg_end();
+    with (actor ACTOR_ATTENDANT1) {
+        Slide2PositionMark(1, Position<'Kiona 3.5', 55, 40.5>);
+    }
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Uhh... I'm actually an applicant for guild\nmembership, and I--");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(0, 3);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_HAPPY, FACE_POS_BOTTOM_R_FACEINW, 
+         " OH! [K]So we are going to be team\nmates?");
+    ~msg_end();
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " I don't know if--");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(90, 3);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_HAPPY, FACE_POS_BOTTOM_R_FACEINW, 
+         " This is so exciting! My first teammate!");
+    ~msg_end();
+    se_Play(8961);
+    with (actor ACTOR_ATTENDANT1) {
+        SetEffect(92, 3);
+    }
+    Wait(20);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(0, 3);
+    }
+    Wait(5);
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam 7', 38, 51.5>);
+    }
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(2);
+    }
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'Nubi 4', 40, 53>);
+    }
+    Wait(40);
+    ~msg(ACTOR_PLAYER, FACE_DETERMINED, FACE_POS_BOTTOM_R_FACEINW, 
+         " .[W:30].[W:30].[W:30]");
+    Wait(40);
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam 9', 48, 51.5>);
+    }
+    ~msg_end();
+    se_Play(8964);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(88, 3);
+    }
+    WaitExecuteLives(ACTOR_UNIT_NPC1);
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(4, Position<'Arran 5', 44.5, 50>);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_HAPPY, FACE_POS_BOTTOM_R_FACEINW, 
+         " HI! I’m [CS:F]Arran[CR]! Do you also want to be\nan Explorer?");
+    ~msg_end();
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(1, Position<'Kiona 5', 50, 47.5>);
+    }
+    with (actor ACTOR_PLAYER) {
+        Turn2DirectionLives(4, 10, ACTOR_PLAYER);
+    }
+    ~msg(ACTOR_PLAYER, FACE_DETERMINED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Hi [CS:F]Arran[CR]. [K]I\'m [hero]. Yes, [W:30]I want to be\nan Explorer.");
+    ~msg_end();
+    with (actor ACTOR_PLAYER) {
+        Move2PositionMark(1, Position<'Nubi 5', 50.5, 53>);
+    }
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam 10', 50.5, 53>);
+    }
+    WaitExecuteLives(ACTOR_PLAYER);
+    with (actor ACTOR_ATTENDANT1) {
+        Turn2DirectionLives(4, 10, ACTOR_PLAYER);
+    }
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Ew, what happened to you?");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        Turn2DirectionLives(4, 10, ACTOR_ATTENDANT1);
+    }
+    with (actor ACTOR_PLAYER) {
+        Turn2DirectionLives(4, 10, ACTOR_ATTENDANT1);
+    }
+    ~msg(ACTOR_PLAYER, FACE_PAIN, FACE_POS_BOTTOM_R_FACEINW, 
+         " I fell off a ladder and into the mud.");
+    ~msg_end();
+    Wait(20);
+    ~msg(ACTOR_ATTENDANT1, FACE_NORMAL, FACE_POS_BOTTOM_R_FACEINW, 
+         " Fun. [K]Anyway, I\'m [CS:F]Kiona[CR].\nI just got here, too.");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(90, 3);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_HAPPY, FACE_POS_BOTTOM_R_FACEINW, 
+         " I just arrived here as well, I was\ntrying to see where we have to go, on my way\nhere I met this nice [CS:N]Kecleon[CR] guy, who said this");
+    ~msg_continue(" is the outpost, but now nobody else\nis here, and I don’t know, maybe we just have\nto wait, or wait!");
+    ~msg_continue(" Maybe we could ask Mr. [CS:N]Kecleon[CR]\nagain, or maybe there are other people around\nhere, I mean some-");
+    ~msg_end();
+    camera_SetEffect(2, 8, 33024);
+    bgm_PlayFadeIn(BGM_EARTHQUAKE3, 0, 256);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(0, 3);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        ExecuteCommon(CORO_LOOK_AROUND_FUNC_SERIES,0);
+    }
+    
+    ~msg(ACTOR_ATTENDANT1, FACE_PAIN, FACE_POS_BOTTOM_R_FACEINW, 
+         " Not again!");
+    ~msg_end();
+    ~msg(ACTOR_PLAYER, FACE_PAIN, FACE_POS_BOTTOM_R_FACEINW, 
+         " It’s even worse than the las- ahh!");
+    ~msg_end();
+    with (actor ACTOR_PLAYER) {
+        Move2PositionOffset(1, 
+                            -2, 2, 2, 2, 
+                            -2, 2, 2, 2, 
+                            -2, 2, 2, 2, 
+                            -2, 2, 2, 2, 
+                            -2, 2, 2, 2, 
+                            -2, 2, 2, 2, 
+                            -2, 2, 2, 2, 
+                            -2, 2, 2, 2);
+    }
+    with (performer 0) {
+        Move2PositionMark(1, Position<'Cam 11', 50.5, 57>);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        Turn2DirectionLives(4, 10, ACTOR_PLAYER);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Turn2DirectionLives(4, 10, ACTOR_PLAYER);
+    }
+    se_Play(8974);
+    with (actor ACTOR_UNIT_NPC1) {
+        ExecuteCommon(CORO_JUMP_SURPRISE_FUNC_SERIES, 0);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        ExecuteCommon(CORO_JUMP_SURPRISE_FUNC_SERIES, 0);
+    }
+    ~msg(ACTOR_ATTENDANT1, FACE_SURPRISED, FACE_POS_BOTTOM_R_FACEINW, 
+         " Careful!");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(4, Position<'Arran Rescue', 48.5, 55>);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(4, Position<'Kiona Rescue', 52.5, 55>);
+    }
+    Wait(60);
+    message_EmptyActor();
+    message_Talk("[CS:N]Everyone[CR]: AHHHH!");
+    message_Close();
+
+    
+    // FALL DOWN NUBI
+    with (actor ACTOR_PLAYER) {
+        ResetOutputAttribute(256);
+    }
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(8);
+    }
+    with (actor ACTOR_PLAYER) {
+        Slide2PositionMark(2, Position<'Nubi F1', 49.5, 57.5>, Position<'Nubi F2', 50.5, 60>, Position<'Nubi F3', 51, 66.5>);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        Move2PositionMark(4, Position<'Arran Rescue', 48.5, 57.5>);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Move2PositionMark(4, Position<'Kiona Rescue', 52.5, 57.5>);
+    }
+    with (performer 0) {
+        Move2PositionMark(2, Position<'Cam Boss', 51, 66.5>);
+    }
+    Wait(30);
+    
+    with (actor ACTOR_UNIT_NPC1) {
+        SetAnimation(8);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        Slide2PositionMark(2, Position<'Arran F1', 46.5, 57.5>, Position<'Arran F2', 48.5, 60>, Position<'Arran F3', 46, 66.5>);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        SetAnimation(8);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Slide2PositionMark(2, Position<'Kiona F1', 50.5, 57.5>, Position<'Kiona F2', 52.5, 60>, Position<'Kiona F3', 56, 66.5>);
+    }
+    WaitExecuteLives(ACTOR_PLAYER);
+    with (actor ACTOR_PLAYER) {
+        SetOutputAttribute(256);
+    }
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(29);
+    }
+    WaitExecuteLives(ACTOR_UNIT_NPC1);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetOutputAttribute(256);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        SetOutputAttribute(256);
+    }    
+    Wait(10);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetAnimation(2);
+    }
+    Wait(10);
+    with (actor ACTOR_ATTENDANT1) {
+        SetAnimation(29);
+    }
+    camera_SetEffect(2, 4, 33024);
+    Wait(60);
+    with (actor ACTOR_ATTENDANT1) {
+        SetAnimation(23);
+    }
+    Wait(10);
+    camera_SetEffect(2, 2, 33024);
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(23);
+    }
+    WaitExecuteLives(ACTOR_PLAYER);
+    Wait(20);
+    with (actor ACTOR_PLAYER) {
+        SetAnimation(2);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        SetAnimation(2);
+    }
+    
+    camera_SetEffect(0, 0, 0);
+    bgm_FadeOut(30);
+    
+    ~msg(ACTOR_PLAYER, FACE_TEARY_EYED, FACE_POS_STANDARD, 
+         " NO! Not again!");
+    ~msg_end();
+    ~msg(ACTOR_ATTENDANT1, FACE_STUNNED, FACE_POS_STANDARD, 
+         " ...");
+    ~msg_end();
+    ~msg(ACTOR_UNIT_NPC1, FACE_NORMAL, FACE_POS_STANDARD, 
+         " Oh wow, those are strong\nearthquakes they have here! The force of\nnature! - [K]Are you both alright?");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        Turn2DirectionLives(4, 10, ACTOR_PLAYER);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Turn2DirectionLives(4, 10, ACTOR_PLAYER);
+    }
+    with (actor ACTOR_PLAYER) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    ~msg(ACTOR_ATTENDANT1, FACE_STUNNED, FACE_POS_STANDARD, 
+         " ...");
+    ~msg(ACTOR_ATTENDANT1, FACE_STUNNED, FACE_POS_STANDARD, 
+         " No.");
+    ~msg_end();
+    
+    
+    // LANDO
+    supervision_Acting(1);
+    with (actor ACTOR_NPC_LANDO) {
+        ResetOutputAttribute(256);
+    }
+
+    message_EmptyActor();
+    message_Talk("[CS:N]???[CR]: Aha! Look who we have here!");
+    message_Close();
+    
+    with (actor ACTOR_NPC_LANDO) {
+        Move2PositionMark(4, Position<'Lando', 46, 58.5>);
+    }
+    
+    with (actor ACTOR_UNIT_NPC1) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+    with (actor ACTOR_PLAYER) {
+        Turn2Direction(4, 10, DIR_UP);
+    }
+
+    ~msg_lando("[CS:N]???[CR]: So this is were you said you were going.[K]\nWhat do you think you are doing here?");
+    ~msg_continue("[CS:N]???[CR]: Do you really think a little looser like you\nhas what it takes to become an Explorer?");
+    ~msg_end();
+    
+    se_Play(8971);
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(94, 3);
+    }
+    ~msg(ACTOR_UNIT_NPC1, FACE_ANGRY, FACE_POS_STANDARD, 
+         " Lando! What are YOU doing here?");
+    ~msg_end();
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_STANDARD, 
+         " You know this guy?");
+    ~msg_end();
+    ~msg(ACTOR_UNIT_NPC1, FACE_ANGRY, FACE_POS_STANDARD, 
+         " ... He’s just a jerk!");
+    ~msg_end();
+    with (actor ACTOR_UNIT_NPC1) {
+        SetEffect(0, 3);
+    }
+    ~msg_lando("[CS:N]Lando[CR]: Well, I have things to do here, that are\nactually important.");
+    ~msg_continue("[CS:N]Lando[CR]: Anyway. I have to go now. [K]But before I\ngo...");
+    ~msg_end();
+    
+    with (actor ACTOR_NPC_LANDO) {
+        Move2PositionMark(4, Position<'Lando 2', 42, 71>);
+    }
+    ~msg_lando("[CS:N]Lando[CR]: Guys? These are the people I was\ntelling you about.");
+    ~msg_end();
+    
+    Wait(30);
+    camera_SetEffect(2, 1, 33024);
+    bgm_PlayFadeIn(BGM_EARTHQUAKE3, 0, 256);
+    
+    se_Play(8974);
+    with (actor ACTOR_UNIT_NPC1) {
+        ExecuteCommon(CORO_JUMP_SURPRISE_FUNC_SERIES, 0);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        ExecuteCommon(CORO_JUMP_SURPRISE_FUNC_SERIES, 0);
+    }
+    with (actor ACTOR_PLAYER) {
+        ExecuteCommon(CORO_JUMP_SURPRISE_FUNC_SERIES, 0);
+    }
+    Wait(20);
+    with (performer 0) {
+        Move2PositionMark(1, Position<'Cam Boss 2', 51, 74.5>);
+    }
+    Wait(30);
+    screen_WhiteOut(1, 5);
+    Wait(10);
+    supervision_Acting(2);
+    camera_SetEffect(0, 0, 0);
+    bgm_FadeOut(30);
+    with (actor ACTOR_PLAYER) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    with (actor ACTOR_ATTENDANT1) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    with (actor ACTOR_UNIT_NPC1) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    with (actor ACTOR_NPC_LANDO) {
+        Turn2Direction(4, 10, DIR_DOWN);
+    }
+    screen_FadeIn(1, 5);
+    
+    ~msg_lando("[CS:N]Lando[CR]: These are the pokemon that want to\ncause trouble here. You better deal with them.");
+    ~msg_end();
+    with (actor ACTOR_NPC_LANDO) {
+        Turn2Direction(4, 10, DIR_UPRIGHT);
+    }
+    ~msg_lando("[CS:N]Lando[CR]: Well. Let’s see if you have what it\ntakes to be an Explorer.");
+    ~msg_end();
+    with (actor ACTOR_NPC_LANDO) {
+        Move2PositionMark(2, Position<'Lando 3', 30, 78.5>);
+    }
+    
+    ~msg_muk("[CS:N]Muk[CR]: WUURHH!! - WHY DO YOU STEAL\nFROM FRIENDS?");
+    ~msg_end();
+    ~msg(ACTOR_PLAYER, FACE_SURPRISED, FACE_POS_STANDARD, 
+         " We\'re not stealing anything; we just\nwant to--");
+    ~msg_end();
+    ~msg_muk("[CS:N]Muk[CR]: STOP TALKING.");
+    ~msg_end();
+    screen_WhiteOut(1, 5);
+    Wait(10);
+    supervision_Acting(3);
+    screen_FadeIn(1, 5);
+    Wait(120);
+    ~msg_muk("[CS:N]Muk[CR]: WE WILL STOP YOU.");
+    ~msg_end();
+    ~msg(ACTOR_ATTENDANT1, FACE_WORRIED, FACE_POS_STANDARD, 
+         " I hate this place.");
+    ~msg_end();
+    ~msg(ACTOR_UNIT_NPC1, FACE_SURPRISED, FACE_POS_STANDARD, 
+         " So wait?[K] We have to fight them?[K]\nI don’t know if - I mean… Em…");
+    ~msg_end();
+    ~msg(ACTOR_PLAYER, FACE_DETERMINED, FACE_POS_STANDARD, 
+         " It looks like there’s no other option.");
+    ~msg_end();
+    ~msg_muk("[CS:N]Muk[CR]: WUURHH!!");
+    ~msg_end();
+    bgm_Stop();
+    se_Play(5143);
+    screen_WhiteOut(1, 2);
+    Wait(2);
+    screen_FadeIn(1, 2);
+    Wait(10);
+    se_Play(5143);
+    screen_WhiteOut(1, 2);
+    Wait(2);
+    screen_FadeIn(1, 2);
+    WaitSe(5143);
+    CallCommon(CORO_BOSS_WIPE_FUNC);
+    main_EnterDungeon(2, 30);
+    main_EnterDungeon(-1, 30);
+
+    
+    Wait(6000);
+    screen_FadeOut(1, 150);
+    back2_SetMode(0);
+    Wait(60);
+    end;
+}
